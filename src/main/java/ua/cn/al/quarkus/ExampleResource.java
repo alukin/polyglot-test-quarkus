@@ -13,6 +13,9 @@ public class ExampleResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
         String out = "From JS:";
+//Workarround: replace class loaded. Uncomment to make it work        
+//        Thread.currentThread().setContextClassLoader(ClassLoader.getSystemClassLoader());
+
         try (Context context = Context.create()) {
             Value function = context.eval("js", "x => x+1");
             assert function.canExecute();
