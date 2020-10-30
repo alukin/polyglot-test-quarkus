@@ -13,7 +13,7 @@ public class ExampleResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
         String out = "From JS:";
-//Workarround: replace class loaded. Uncomment to make it work        
+//Workarround: replace class loader. Uncomment to make it work        
 //        Thread.currentThread().setContextClassLoader(ClassLoader.getSystemClassLoader());
 
         try (Context context = Context.create()) {
