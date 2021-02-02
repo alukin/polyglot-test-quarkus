@@ -1,9 +1,9 @@
-package ua.cn.al.quarkus;
+package ua.cn.al.tst;
 
 import io.quarkus.test.junit.NativeImageTest;
 
 @NativeImageTest
-public class NativeExampleResourceIT extends ExampleResourceTest {
+public class NativeGreetingResourceIT extends GreetingResourceTest {
 
     // Execute the same tests but in native mode.
 }
