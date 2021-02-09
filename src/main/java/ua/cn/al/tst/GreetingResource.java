@@ -15,9 +15,9 @@ public class GreetingResource {
     public String hello() {
         String out = "From JS:";
 //Workarround: replace class loader. Uncomment to make it work
-
-//        ClassLoader quarkusClassLoader = Thread.currentThread().getContextClassLoader();
-//        Thread.currentThread().setContextClassLoader(ClassLoader.getSystemClassLoader());
+//for Quarkus 1.11.2 this workaround is required in any mode
+       ClassLoader quarkusClassLoader = Thread.currentThread().getContextClassLoader();
+       Thread.currentThread().setContextClassLoader(ClassLoader.getSystemClassLoader());
 
         try (Context context = Context.create()) {
             Value function = context.eval("js", "x => x+1");
@@ -27,7 +27,8 @@ public class GreetingResource {
         } finally {
             //we have to rtestore original class loader after JS execution
             //because Quarkus needs it. If we don't it can not load e.g. TransactionManager
-//            Thread.currentThread().setContextClassLoader(quarkusClassLoader);
+
+            Thread.currentThread().setContextClassLoader(quarkusClassLoader);
             
         }
         return out;
