@@ -6,7 +6,7 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 **THIS IS A BUG REPRODUCER for polyglot support in Quarkus. Polyglot support is brocken in Quarkus since 1.3.0 release
   due to class loader changes in Quarkus 1.3.0.**
 
-** Note ** that workaround privded in GreetinResource.java now required for not only debug mode ny for Java nad Native mode.
+**Note** that workaround privded in GreetinResource.java now required for not only debug mode but for Java and Native modes also.
 
 Prevoiusly, bug was in development mode only. Polyglot (JavaScript in this case) worked in final builds in Java and Native mode.
 
