@@ -2,6 +2,8 @@
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
+**This repository will be archieved in a month or two because bug is finally fixed in release 1.13.0"
+I hope the bug will not apear again becuase Quarkus developers added tests for GraalVM polyglot feature.
 
 **THIS IS A BUG REPRODUCER for polyglot support in Quarkus. Polyglot support is brocken in Quarkus since 1.3.0 release
   due to class loader changes in Quarkus 1.3.0.**
