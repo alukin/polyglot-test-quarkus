@@ -62,3 +62,38 @@ If you want to learn more about building native executables, please consult http
 <p>A Hello World RESTEasy resource</p>
 
 Guide: https://quarkus.io/guides/rest-json
+
+
+# It fails again!
+At least it does not work with GraalVM 22.0.0.2  native-image andQuarkus 2.7.0
+I need to try some tricks again
+
+
+### Exeptions
+
+2022-02-06 22:00:05,885 INFO  [io.quarkus] (main) code-with-quarkus 1.0.0-SNAPSHOT native (powered by Quarkus 2.7.0.Final) started in 0.038s. Listening on: http://0.0.0.0:8080
+2022-02-06 22:00:05,886 INFO  [io.quarkus] (main) Profile prod activated. 
+2022-02-06 22:00:05,886 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy, smallrye-context-propagation, vertx]
+2022-02-06 22:00:19,028 ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-0) HTTP Request to /hello-resteasy failed, error id: fd35a6e6-96d3-4ce9-87f2-0f6a02e67b79-1: org.jboss.resteasy.spi.UnhandledException: java.lang.IllegalStateException: No language and polyglot implementation was found on the classpath. Make sure a language is added to the classpath (e.g., native-image --language:js).
+        at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:105)
+        at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:359)
+        at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+        at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+        at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+        at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+        at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+        at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+        at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+        at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+        at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:151)
+        at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:91)
+        at io.quarkus.vertx.core.runtime.VertxCoreRecorder$13.runWith(VertxCoreRecorder.java:543)
+        at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2449)
+        at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1478)
+        at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+        at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+        at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+        at java.lang.Thread.run(Thread.java:829)
+        at com.oracle.svm.core.thread.JavaThreads.threadStartRoutine(JavaThreads.java:597)
+        at com.oracle.svm.core.posix.thread.PosixJavaThreads.pthreadStartRoutine(PosixJavaThreads.java:194)
+Caused by: java.lang.IllegalStateException: No language and polyglot implementation was found on the classpath. Make sure a language is added to the classpath (e.g., native-image --language:js).
