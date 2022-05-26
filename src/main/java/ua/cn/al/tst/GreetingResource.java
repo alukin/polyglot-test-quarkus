@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Value;
 
-@Path("/hello-resteasy")
+@Path("/hello")
 public class GreetingResource {
 
     @GET
