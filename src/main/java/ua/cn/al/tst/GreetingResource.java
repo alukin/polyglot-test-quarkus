@@ -27,7 +27,6 @@ public class GreetingResource {
         } finally {
             //we have to rtestore original class loader after JS execution
             //because Quarkus needs it. If we don't it can not load e.g. TransactionManager
-
 //            Thread.currentThread().setContextClassLoader(quarkusClassLoader);
             
         }
